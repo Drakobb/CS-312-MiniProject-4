@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Blog Web Application</h1>
+
+  <div class="container mt-5">
+    <h1 class="text-center">Blog Posts</h1>
+    <form class="mb-4" action="/new" method="POST">
+      <div class="form-group">
+        <input type="text" name="title" placeholder="Title" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <textarea name="content" placeholder="Your blog content" class="form-control" required></textarea>
+      </div>
+      <div class="form-group">
+        <input type="text" name="author" placeholder="Author" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Create Post</button>
+    </form>
+  
+
+  <h2>All Posts</h2>
+  <div class="row">
+    <% if (posts.length > 0) { %>
+      <% posts.forEach((post, index) => { %>
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><a href="/post/<%= index %>"><%= post.title %></a></h5>
+              <h6 class="card-subtitle mb-2 text-muted">By <%= post.author %></h6>
+              <p class="card-text"><%= post.content %></p>
+              <p><small class="text-muted">Posted on <%= post.date %></small></p>
+              <form action="/edit/<%= index %>" method="GET" style="display:inline;">
+                <button class="btn btn-warning btn-sm">Edit</button>
+              </form>
+              <form action="/delete/<%= index %>" method="POST" style="display:inline;">
+                <button class="btn btn-danger btn-sm">Delete</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p>No posts yet!</p>
+    <% } %>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+body {
+    background-color: #add8e6; 
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  h1 {
+    color: #343a40;
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-title {
+    color: #007bff;
+  }
