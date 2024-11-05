@@ -15,6 +15,8 @@ app.use(express.urlencoded({extended: true}));
 app.use(blogRoutes);
 
 //Start the server
+// Test for github
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
